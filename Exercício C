@@ -1,0 +1,36 @@
+// ALUNO: Ricardo Nogueira de Oliveira Lima Bortolin 
+// MATRÍCULA: UC21200594
+//C-Construa uma função em C que possua a capacidade de escrever um inteiro em um arquivo binário. Escreva um programa que se utiliza adequadamente da função que você projetou.
+
+//Resposta:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void writeFile(int number);
+
+int main() {
+	int number = 0;
+	
+	printf("Insira um numero para ser guardado: ");
+	scanf("%d", &number);
+	
+	writeFile(number);
+	
+	printf("Dados guardados com sucesso!");
+	
+	return 0;
+}
+
+void writeFile(int number) {
+	FILE *file;
+	
+	file = fopen("numbers.txt", "a");
+	
+	if (file == NULL) {
+		printf("[ERRO] Erro na abertura do arquivo!");
+		return;
+	}
+	
+	fprintf(file, "%d", number);
+}
